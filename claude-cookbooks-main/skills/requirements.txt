@@ -2,8 +2,8 @@
 # Install with: pip install -r requirements.txt
 
 # Core dependencies
-anthropic>=0.71.0                         # Anthropic SDK with Skills support
-python-dotenv>=1.0.0                      # Environment variable management
+anthropic>=0.87.0                         # Anthropic SDK with Skills support
+python-dotenv>=1.2.2                      # Environment variable management
 ipykernel>=6.25.0                         # Jupyter kernel for notebooks
 jupyter>=1.0.0                            # Jupyter notebook support
 
@@ -17,7 +17,7 @@ matplotlib>=3.7.0                         # Basic plotting
 plotly>=5.14.0                           # Interactive visualizations
 
 # Utilities
-requests>=2.31.0                          # HTTP requests for examples
+requests>=2.33.0                          # HTTP requests for examples
 tqdm>=4.65.0                             # Progress bars for long operations
 tabulate>=0.9.0                          # Pretty-print tables in notebooks
 
