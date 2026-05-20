@@ -2,7 +2,7 @@
 #    uv export --project notebooks --no-hashes --no-emit-project --output-file notebooks/requirements.txt
 annotated-types==0.7.0
     # via pydantic
-anthropic==0.103.0
+anthropic==0.103.1
     # via claude-architect-notebooks
 anyio==4.13.0
     # via
