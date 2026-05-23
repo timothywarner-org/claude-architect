@@ -11,5 +11,26 @@
     "claude-architect/.vscode/mcp.json: oreilly-document-mcp": {
       "allowedModels": ["copilot/auto", "copilotcli/claude-sonnet-4.6"]
     }
-  }
+  },
+
+  // --- Notebook editor: prevent the "newer on disk" save conflict ---
+  // The .ipynb files in notebooks/ are GENERATED ARTIFACTS - their source of
+  // truth is scripts/_notebooks/*.py. When the builder regenerates a notebook
+  // while it's open in VS Code, autosave silently races with disk and the
+  // editor pops the "overwrite or revert" dialog. Off-by-default eliminates
+  // the race. Save explicitly with Ctrl+S when you actually want to write.
+  "files.autoSave": "off",
+
+  // --- Notebook display: surface line numbers and full output for debug ---
+  // Cell numbers (the [N]: prefix) already show; this adds source-line
+  // numbers inside every code cell so tracebacks like "line 40" are
+  // navigable by eye. Toggle a single cell with `L` in command mode.
+  "notebook.lineNumbers": "on",
+  // The agentic-loop demos in cca-f-exam-mastery.ipynb print multi-iteration
+  // traces. The default 30-line clip hides the load-bearing teaching moment
+  // (the history_len growth). 100 lines comfortably covers a 6-iteration run.
+  "notebook.output.textLineLimit": 100,
+  // Word-wrap long tool-result blocks so the structured-error JSON stays
+  // readable without horizontal scrolling.
+  "notebook.output.wordWrap": true
 }

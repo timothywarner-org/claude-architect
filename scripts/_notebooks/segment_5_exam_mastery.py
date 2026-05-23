@@ -248,6 +248,7 @@ The cell below runs a compact synthetic agent over a 2-tool surface and prints `
 """
 
 _part1_loop_code = '''\
+from typing import Any  # self-contained: cell runnable out of order
 # A compact 2-tool synthetic agent. The tools are in-memory dicts -
 # zero dispatch cost. The whole demo is one user turn, <=4 round-trips.
 ORDERS = {
@@ -362,6 +363,7 @@ The cell below runs a coordinator over two subagents (`research`, `synthesis`). 
 """
 
 _part1_subagent_code = '''\
+from typing import Any  # self-contained: cell runnable out of order
 # In-memory mocks. The point is the topology, not the data.
 _FACTS = {
     "ORD-481": "shipped 2026-05-15 via courier; signed-for",
@@ -499,6 +501,7 @@ The cell below runs both against synthetic calls. **No API needed** - hooks are 
 """
 
 _part1_hooks_code = '''\
+from typing import Any  # self-contained: cell runnable out of order
 # Sample 1 from the exam guide: refund cap. A PreToolUse hook is the
 # only correct answer (option B = prompt is wrong; option C = few-shot
 # is wrong; option D = routing classifier solves a different problem).
@@ -663,6 +666,7 @@ The cell below runs all four modes against the same prompt and prints the result
 """
 
 _part2_tool_choice_code = '''\
+from typing import Any  # self-contained: cell runnable out of order
 # One tiny tool, two prompts to make the auto-vs-any contrast visible.
 # The prompt for `auto` is deliberately UNRELATED to the tool so the
 # model has a reason NOT to call it; the prompt for `any` and `tool`
@@ -734,6 +738,7 @@ The cell below returns a structured-business-error from a `process_refund` tool 
 """
 
 _part2_structured_error_code = '''\
+from typing import Any  # self-contained: cell runnable out of order
 # A single tool that returns a structured business error.
 ERR_TOOLS = [{
     "name": "process_refund",
@@ -1080,6 +1085,7 @@ argument-hint: "Optional: specific package to audit"
 """
 
 _part3_skill_inspect_code = '''\
+from typing import Optional  # self-contained: cell runnable out of order
 # Look for any SKILL.md in the repo (project-scoped, possibly nested).
 skill_files = list(REPO_ROOT.rglob("SKILL.md"))
 # Filter out anything under node_modules/.venv/.
@@ -1265,6 +1271,7 @@ The cell below defines a compact `Invoice` model with a nullable field and print
 """
 
 _part4_pydantic_code = '''\
+from typing import Optional  # self-contained: cell runnable out of order
 from pydantic import BaseModel, Field, ValidationError
 
 class Invoice(BaseModel):
@@ -1310,6 +1317,7 @@ The forced-tool-call pattern + a Pydantic validation gate + a **bounded retry lo
 """
 
 _part4_extract_code = '''\
+from typing import Optional  # self-contained: cell runnable out of order
 # Register the Pydantic schema AS a tool. input_schema is the JSON Schema
 # view of our Pydantic model - the model sees exactly what Pydantic will
 # validate against.
@@ -1540,6 +1548,7 @@ The cell below trims a verbose synthetic tool output and pins a case-facts block
 """
 
 _part5_pruning_code = '''\
+from typing import Any  # self-contained: cell runnable out of order
 # A bloated synthetic tool output - 40+ fields, only 5 relevant for refund.
 RAW_ORDER = {
     "order_id": "ORD-481",
@@ -1620,6 +1629,7 @@ The exam tests this directly (Sample Question 3). The legitimate triggers:
 """
 
 _part5_escalation_code = '''\
+from typing import Any  # self-contained: cell runnable out of order
 # Rule-based escalation classifier. The three legitimate triggers + the
 # anti-pattern (sentiment) explicitly asserted to NOT escalate.
 
