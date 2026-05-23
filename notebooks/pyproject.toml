@@ -27,3 +27,8 @@ dependencies = [
 [tool.uv]
 # Keep the .venv inside notebooks/ so learners can see it
 managed = true
+# Force litellm above the GHSA fix floor (7 alerts, 2 critical). jupyter-ai-litellm
+# 0.0.2 pins litellm<1.83; no newer wrapper release exists. The override forces
+# resolution past that cap. Re-test segment-* smokes if jupyter-ai-litellm's
+# Jupyternaut integration starts misbehaving after a uv lock.
+override-dependencies = ["litellm>=1.83.7"]
